@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = Model.TeamName;
+    ViewData["Name"] = Model.TeamName;
+
+    if(ViewData["Title"] is null){
+        ViewData["Title"] = "Bowling Contact List"; 
+    };
+}
+@model IndexViewModel
+
+<div class="text-center">
+    <h1 class="text-info">@ViewData["Name"]</h1>
+    @if (ViewData["Name"] is null)
+    {
+        <h1 class="text-info">Bowlers Contact List</h1>
+    }
+    <br />
+    <br />
+
+    @foreach (var x in Model.Bowlers)
+    {
+            <p>@x.BowlerFirstName @x.BowlerMiddleInit @x.BowlerLastName</p>
+            <p>@x.BowlerAddress @x.BowlerCity @x.BowlerState @x.BowlerZip</p>
+            <p>@x.BowlerPhoneNumber</p>
+            <br />
+    }
+
+</div>
+
+<div page-info="@Model.PageNumberingInfo"
+     page-url-teamname="@Model.TeamName" 
+     page-classes-enabled="true"
+     page-class="btn" page-class-normal="btn-outline-light"
+     page-class-selected="btn-info"
+     class="btn-group pull-right m-1 pagination-lg float-right">
+</div>
+
+
